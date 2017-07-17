@@ -119,13 +119,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-.landing-page {
-  height: 100vh; }
-
 h1 {
   font-size: 35px;
   margin: 0;
-  color: #fff; }
+  color: #fff;
+  margin-top: 5px; }
 
 video {
   width: 75%;
@@ -148,11 +146,11 @@ main {
 .choose-form {
   text-align: center; }
   .choose-form button {
-    font-size: 20px;
-    display: inline-block;
-    width: 90%; }
+    font-size: 20px; }
   .choose-form h3 {
     margin-bottom: 50px; }
+  .choose-form .dropdown-menu {
+    left: 44%; }
 
 body {
   font-family: Avenir, "Open Sans", "Sans Serif";
