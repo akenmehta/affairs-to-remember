@@ -126,7 +126,7 @@ h1 {
   margin-top: 5px; }
 
 video {
-  width: 75%;
+  width: 70%;
   display: block;
   margin: 40px auto; }
 
@@ -158,6 +158,13 @@ main {
     @media (max-width: 990px) {
       .choose-form .dropdown-menu {
         left: 42%; } }
+
+#will {
+  width: 40%;
+  margin: 0 auto; }
+
+.invisible {
+  display: none; }
 
 body {
   font-family: Avenir, "Open Sans", "Sans Serif";

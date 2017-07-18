@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Affairs to Remember</title>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
@@ -61,12 +62,12 @@
 			</div>
  -->
 			<div class="dropdown">
-				<h3>Get started.</h2>
+				<h3>Get started.</h3>
 		  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		    		I want to:
 		   		 	<span class="caret"></span>
 		 		 </button>
-		  		 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  		 <ul id="select-form" class="dropdown-menu" aria-labelledby="dropdownMenu1">
 			    	 <li><a href="#">Will: Property and Estate</a></li>
 			    	 <li role="separator" class="divider"></li>
 			    	 <li><a href="#">Power of Attorney: Property</a></li>
@@ -76,6 +77,73 @@
 			</div>
 		</section>
 	</main>
+
+	<section id="will" class="invisible">
+		<form>
+			<div class="form-group">
+				<label >1. Marital Status</label>
+			 	<select>
+			 		<option value="none">Select</option>
+			 		<option value="single">Single</option>
+			 		<option value="married">Married</option>
+			 		<option value="separated">Separated</option>
+			 		<option value="divorced">Divorced</option>
+			 		<option value="common-law">Common-law</option>
+			 	</select>
+			</div>
+			
+			<div class="form-group">
+				<label >2. Dependants</label>
+			 	<select>
+			 		<option value="none">Select</option>
+			 		<option value="minor">Minor child/children</option>
+			 		<option value="adult">Adult children</option>
+			 		<option value="single">Separated</option>
+			 		<option value="parents">Parents</option>
+			 	</select>
+			</div>
+	
+			<div class="form-group">
+			    <label for="legalName">3. Full legal name (as it appears on your birth certificate).</label>
+			    <input type="text" class="form-control" id="legalName" placeholder="Legal Name">
+			</div>
+
+			<div class="form-group">
+			    <label for="otherName">4. Your name (as it appears on any other offical documents or credit cards).</label>
+			    <input type="text" class="form-control" id="otherName" placeholder="Other Name">
+			</div>
+
+			<div class="form-group">
+			    <label for="estateTrustee">
+			    	5. Estate Trustee: the executor of your Will.
+					<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+			    </label>
+			    <input type="text" class="form-control" id="estateTrustee" placeholder="Name(s) of Estate Trustee">
+			</div>
+
+			<div class="form-group">
+			    <label for="estateDetails">6. What will happen with your Estate in the event of your passing? Are there any assets where a beneficiary has not been named (example, a cash balance account, points programs, etc).</label>
+			    <input type="text" class="form-control" id="estateDetails" placeholder="Type here...">
+			</div>
+
+			<div class="form-group">
+			    <label for="bequests">8. Are there specific wishes that you have for your possessions? Example, family heirlooms, personal items, etc.</label>
+			    <input type="text" class="form-control" id="bequests" placeholder="Type here...">
+			</div>
+
+			<div class="form-group">
+			    <label for="donations">9. Do you wish to make any charitable donations?</label>
+			    <input type="text" class="form-control" id="donations" placeholder="Type here...">
+			</div>
+
+			<div class="form-group">
+			    <label for="finalWishes">10. Do you wish to include any burial or cremation instructions?</label>
+			    <input type="text" class="form-control" id="finalWishes" placeholder="Type here...">
+			</div>
+
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</section>
 
 
 	<footer class="navbar navbar-inverse"></footer>

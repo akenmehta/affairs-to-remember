@@ -2,6 +2,7 @@
 
 $(function () {
 	smoothScroll();
+	selectForm();
 });
 
 function smoothScroll() {
@@ -15,6 +16,16 @@ function smoothScroll() {
 				}, 1000);
 				return false;
 			}
+		}
+	});
+}
+
+function selectForm() {
+	$('ul li').on('click', function () {
+
+		if ($(this).text() === 'Will: Property and Estate') {
+			console.log($(this).text());
+			$('#will').removeClass('invisible');
 		}
 	});
 }
