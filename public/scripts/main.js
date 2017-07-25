@@ -30,11 +30,14 @@ function selectForm() {
 	});
 }
 
-$('.dependants').on('change', function () {
-	console.log($('option').prop('selected', true).val());
+// $('.marital-status').change(function(){
+// 	console.log($(this).find('option:selected').val());
+// });
+
+$('#dependents, .marital-status').change(function () {
+	console.log($(this).find('option:selected').val());
 });
 
 var doc = new jsPDF();
-
 doc.text('Hello world!', 10, 10);
 // doc.save('a4.pdf');
