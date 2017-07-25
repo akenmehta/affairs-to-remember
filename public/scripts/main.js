@@ -21,11 +21,20 @@ function smoothScroll() {
 }
 
 function selectForm() {
-	$('ul li').on('click', function () {
-
+	$('ul li').on('click', function (e) {
+		e.preventDefault();
 		if ($(this).text() === 'Will: Property and Estate') {
 			console.log($(this).text());
 			$('#will').removeClass('invisible');
 		}
 	});
 }
+
+$('.dependants').on('change', function () {
+	console.log($('option').prop('selected', true).val());
+});
+
+var doc = new jsPDF();
+
+doc.text('Hello world!', 10, 10);
+// doc.save('a4.pdf');
