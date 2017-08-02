@@ -119,30 +119,50 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-h1 {
-  font-size: 35px;
-  margin: 0;
-  color: #fff;
-  margin-top: 5px; }
+.container {
+  /*border: 1px solid red;*/ }
 
-video {
-  width: 70%;
-  display: block;
-  margin: 40px auto; }
+.index-main {
+  padding: 40px 0; }
+  .index-main p {
+    font-size: 14.5px; }
+  @media (max-width: 990px) {
+    .index-main h2 {
+      text-align: center; }
+    .index-main .purpose {
+      margin-top: 25px; } }
 
-.bottom-arrow span {
-  display: block;
+.will, .poa-property, .poa-care {
+  padding: 30px 15px;
+  background-color: #f5f5f5;
+  font-size: 14.5px; }
+
+.will, .poa-property {
+  border-right: 1px solid #e7e7e7; }
+  @media (max-width: 992px) {
+    .will, .poa-property {
+      border-right: none;
+      border-bottom: 1px solid #e7e7e7; } }
+
+.lawyers h3 {
   text-align: center; }
+
+.lawyer-container {
+  width: calc(50% - 8px);
+  margin: 4px;
+  padding: 15px;
+  border: 1px solid #e7e7e7; }
+  @media (max-width: 530px) {
+    .lawyer-container {
+      width: calc(100% - 10px); } }
+
+footer p {
+  text-align: center;
+  margin-top: 15px; }
 
 main {
   padding-top: 50px;
   padding-bottom: 200px; }
-
-.jumbotron {
-  background: none;
-  border: 1px solid #000;
-  width: 80%;
-  margin: 50px auto; }
 
 .choose-form {
   text-align: center; }
@@ -167,11 +187,9 @@ main {
   display: none; }
 
 body {
-  font-family: Avenir, "Open Sans", "Sans Serif";
+  font-family: 'Open Sans',Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
-  background-image: linear-gradient(45deg, #83C1DB 0%, #e4efe9 100%);
-  background-attachment: fixed;
-  padding: 0;
+  padding: 50px 0 75px 0;
   margin: 0; }
 
 a, a:hover, a:active, a:visited, a:focus {

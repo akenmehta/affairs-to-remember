@@ -34,7 +34,7 @@ function selectForm() {
 // 	console.log($(this).find('option:selected').val());
 // });
 
-$('#dependents, .marital-status').change(function () {
+$('.dependents, .marital-status').change(function () {
 	console.log($(this).find('option:selected').val());
 });
 
