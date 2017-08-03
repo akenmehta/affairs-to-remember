@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Affairs to Remember</title>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="public/styles/style.css">
+</head>
+<body>
+	<div class="landing-page">
+		<nav class="navbar navbar-default navbar-fixed-top">
+	  		<div class="container">
+		    	<div class="navbar-header">
+		      		<a class="navbar-brand" href="index.html">Affairs to Remember</a>
+		   	 	</div>
+		    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    	<ul class="nav navbar-nav navbar-right">
+				      	<li><a href="#">About</a></li>
+				        
+				        <li class="dropdown">
+				        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Started <span class="caret"></span></a>
+				        	<ul class="dropdown-menu">
+					            <li><a href="#">Will: Property and Estate</a></li>
+						    	<li role="separator" class="divider"></li>
+						    	<li><a href="#">Power of Attorney: Property</a></li>
+						    	<li role="separator" class="divider"></li>
+						    	<li><a href="#">Power of Attorney: Personal Care</a></li>
+				          	</ul>
+				        </li>
+
+				        <li><a href="#">Resources</a></li>
+			    	</ul>
+		    	</div><!-- /.navbar-collapse -->
+		  	</div><!-- /.container-->
+		</nav>
+	</div>
+	
+	<div class="will-main container">	
+		<div class="progress">
+	  		<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
+	    		5%
+		   </div>
+		</div>
+
+		<section id="will">
+			<form class="form-01">
+				<div class="form-group">
+				    <label for="legalName">Full legal name (as it appears on your birth certificate).</label>
+				    <input type="text" class="form-control" id="legalName" placeholder="Legal full name">
+				</div>
+
+				<div class="form-group">
+				    <label for="otherName">Your name (as it appears on any other offical documents or credit cards).</label>
+				    <input type="text" class="form-control" id="otherName" placeholder="Other names">
+				</div>
+
+				<div class="form-group">
+					<label >Marital Status:</label>
+				 	<select class="marital-status">
+				 		<option value="None">Select</option>
+				 		<option value="Single">Single</option>
+				 		<option value="Married">Married</option>
+				 		<option value="Separated">Separated</option>
+				 		<option value="Divorced">Divorced</option>
+				 		<option value="Common-law">Common-law</option>
+				 	</select>
+				</div>
+				
+				<div class="form-group">
+					<label >Dependents:</label>
+				 	<select class="dependents">
+				 		<option value="None">Select</option>
+				 		<option value="Minor child/children">Minor child/children</option>
+				 		<option value="Adult children">Adult children</option>
+				 		<option value="Parents">Parents</option>
+				 	</select>
+				</div>
+				<button type="submit" class="btn btn-default btn-01">Next</button>
+			</form>
+
+			<form class="form-02 invisible">
+				<div class="form-group">
+				    <label for="estate-trustee">
+				    	Estate Trustee: the executor of your Will.
+						<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+				    </label>
+				    <textarea class="form-control" rows="3" id="estate-trustee" placeholder="Name(s) of Estate Trustee"></textarea>
+				</div>
+
+				<div class="form-group">
+				    <label for="estate-details">
+					    What will happen with your Estate in the event of your passing? Are there any assets where a beneficiary has not been named (example, a cash balance account, points programs, etc).
+					</label>
+					<textarea class="form-control" rows="5" id="estate-details" placeholder="Type here..."></textarea>
+				</div>
+				<button type="submit" class="btn btn-default btn-02">Next</button>
+			</form>
+
+			<form class="form-03 invisible">
+				<h3>Dependents</h3>
+				<div class="form-group">
+				    <label for="dependent-name">
+					    Full name of your child/children, as it/they appear on their birth certificate(s)
+					</label>
+					<textarea class="form-control" rows="3" id="dependent-name" placeholder="Type here..."></textarea>
+				</div>
+
+				<div class="form-group">
+				    <label for="guardian-name">Guardian of any minor children</label>
+				    <input type="text" class="form-control" id="guardian-name" placeholder="Type here...">
+				</div>
+
+				<div class="form-group">
+				    <label for="bequest-minor">Do you want a child who is not yet 18 to receive his/her bequest at 18?</label>
+				    <select id="bequest-minor" class="drop-down">
+				    	<option value="NA">Select</option>
+				    	<option value="Yes">Yes</option>
+				    	<option value="No">No</option>
+				    </select>
+				</div>
+
+				<div class="form-group">
+				    <label for="bequest-age">If no, at what age should he/she receive their bequest?</label>
+				    <input type="text" class="form-control" id="bequest-age" placeholder="Type here...">
+				</div>
+
+				<div class="form-group">
+				    <label for="stagger">Do you wish to stagger the payments?</label>
+				    <select id="stagger" class="drop-down">
+				    	<option value="NA">Select</option>
+				    	<option value="Yes">Yes</option>
+				    	<option value="No">No</option>
+				    </select>
+				</div>
+
+				<div class="form-group">
+				    <label for="stagger-bequest">If yes, indicate your wishes for staggering the bequest to the child/children (example, a portion at 18 and another portion at 25)</label>
+				    <input type="text" class="form-control" id="stagger-bequest" placeholder="Type here...">
+				</div>
+
+				<button type="submit" class="btn btn-default btn-03">Next</button>
+			</form>
+
+			<form class="form-04 invisible">
+				<div class="form-group">
+				    <label for="wishes">Are there specific wishes that you have for your possessions? Example, family heirlooms, personal items, etc.</label>
+				    <textarea class="form-control" rows="3" id="wishes" placeholder="Type here..."></textarea>
+				</div>
+
+				<div class="form-group">
+				    <label for="donations">Do you wish to make any charitable donations?</label>
+				   <textarea class="form-control" rows="3" id="donations" placeholder="Type here..."></textarea>
+				</div>
+
+				<div class="form-group">
+				    <label for="final-wishes">Do you wish to include any burial or cremation instructions?</label>
+				    <textarea class="form-control" rows="3" id="final-wishes" placeholder="Type here..."></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-default">Save to Device</button>
+			</form>
+		</section>
+	</div>
+
+
+
+	<footer class="navbar navbar-default navbar-fixed-bottom"></footer>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="public/scripts/main.js"></script>
+</body>
+</html>
