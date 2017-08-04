@@ -203,7 +203,7 @@ footer p {
   font-size: 14.5px;
   border-radius: 3px; }
 
-.will-complete h3 {
+.will-complete h3, .poa-property-complete h3 {
   text-align: center; }
 
 .disclaimer {
@@ -227,6 +227,12 @@ footer p {
             justify-content: center; }
     .disclaimer .agree label {
       width: 35%; }
+
+#poa-date {
+  width: 262px;
+  /*@media (max-width: 400px) {
+		width: 100%;
+	}*/ }
 
 body {
   font-family: 'Open Sans',Helvetica, Arial, sans-serif;

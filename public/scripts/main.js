@@ -3,15 +3,73 @@
 var app = {};
 var doc = new jsPDF();
 
-app.printDocument = function () {
-	doc.setFont('Open Sans');
-	doc.text('Will - Property & Estate Information', 10, 20);
-	doc.text('Legal Name: ' + app.legalName, 10, 30);
-	doc.autoPrint();
-	doc.save('autoprint.pdf');
+// app.printDocument = function() {
+// 	doc.setFont('Open Sans');
+// 	doc.text('Will - Property & Estate Information', 10, 20);
+// 	doc.text('Legal Name: '+ app.legalName, 10, 30);
+// 	doc.autoPrint();
+// 	doc.save('autoprint.pdf');
+// }
+app.saveProperty = function () {
+	$('.save-property').click(function (e) {
+		e.preventDefault();
+		app.makePropertyDocument();
+	});
 };
 
-app.saveDocument = function () {
+app.makePropertyDocument = function () {
+	doc.setFont('Open Sans');
+	doc.setFontSize(13);
+	doc.setLineWidth(0.1);
+	doc.line(20, 30, 190, 30); // horizontal line
+	doc.line(20, 38, 190, 38);
+	doc.line(20, 46, 190, 46);
+	doc.line(20, 102, 190, 102);
+	doc.line(20, 110, 190, 110);
+
+	doc.line(20, 30, 20, 110); // vertical line
+	doc.line(75, 30, 75, 110);
+	doc.line(190, 30, 190, 110);
+
+	doc.text('Power of Attorney: Property', 20, 27);
+	doc.text('Legal Name:', 22, 36);
+	doc.text(app.legalName, 77, 36);
+	doc.text('Other Name:', 22, 44);
+	doc.text(app.otherName, 77, 44);
+	doc.text('Are there any restrictions \nof the Power of Attorney?', 22, 52);
+	doc.text(app.propertyRestriction, 77, 52);
+	doc.text('Date of Effectiveness:', 22, 108);
+	doc.text(app.propertyDate, 77, 108);
+
+	doc.save('Power of Attorney: Property.pdf');
+};
+
+app.getPropertyDate = function () {
+	app.propertyDate = '';
+	$('#property-date').change(function () {
+		app.propertyDate = $(this).val();
+		console.log($(this).val());
+	});
+};
+
+app.getPropertyRestriction = function () {
+	app.propertyRestriction = '';
+	$('#property-restrictions').change(function () {
+		app.propertyRestriction = $(this).val();
+		console.log($(this).val());
+	});
+};
+
+app.clickPropertyBtn = function () {
+	$('.btn-poa-property').click(function (e) {
+		e.preventDefault();
+		console.log('clicked');
+		$('form.form-05').addClass('invisible');
+		$('div.poa-property-complete').removeClass('invisible');
+	});
+};
+
+app.makeDocument = function () {
 	doc.setFont('Open Sans');
 	doc.setFontSize(13);
 	doc.setLineWidth(0.1);
@@ -33,7 +91,7 @@ app.saveDocument = function () {
 	doc.line(75, 30, 75, 280);
 	doc.line(190, 30, 190, 280);
 
-	doc.text('Will – Property & Estate Information', 20, 27);
+	doc.text('Will: Property & Estate Information', 20, 27);
 	doc.text('Legal Name:', 22, 36);
 	doc.text(app.legalName, 77, 36);
 	doc.text('Other Name:', 22, 44);
@@ -74,22 +132,14 @@ app.saveDocument = function () {
 	doc.text('Do you wish to make \nany charitable donations?', 22, 76);
 	doc.text(app.donations, 77, 76);
 	doc.text('Do you wish to include \nany burial or cremation \ninstructions?', 22, 116);
-	doc.text(app.FinalWishes, 77, 116);
-
-	doc.save('a4.pdf');
-};
-
-app.printWill = function () {
-	$('.print-will').click(function (e) {
-		e.preventDefault();
-		app.printDocument();
-	});
+	doc.text(app.finalWishes, 77, 116);
+	doc.save('Will: Property and Estate.pdf');
 };
 
 app.saveWill = function () {
 	$('.save-will').click(function (e) {
 		e.preventDefault();
-		app.saveDocument();
+		app.makeDocument();
 	});
 };
 
@@ -99,7 +149,6 @@ app.disclaimer = function () {
 			$('button').removeClass('btn-default');
 			$('button').addClass('btn-primary');
 			app.saveWill();
-			app.printWill();
 		} else {
 			$('button').removeClass('btn-primary');
 			$('button').addClass('btn-default');
@@ -144,13 +193,15 @@ app.clickBtn01 = function () {
 };
 
 app.getFinalWishes = function () {
+	app.finalWishes = '';
 	$('#final-wishes').change(function () {
-		app.FinalWishes = $(this).val();
+		app.finalWishes = $(this).val();
 		console.log(app.FinalWishes);
 	});
 };
 
 app.getDonations = function () {
+	app.donations = '';
 	$('#donations').change(function () {
 		app.donations = $(this).val();
 		console.log(app.donations);
@@ -158,6 +209,7 @@ app.getDonations = function () {
 };
 
 app.getWishes = function () {
+	app.wishes = '';
 	$('#wishes').change(function () {
 		app.wishes = $(this).val();
 		console.log(app.wishes);
@@ -165,6 +217,7 @@ app.getWishes = function () {
 };
 
 app.getStaggerBequest = function () {
+	app.staggerBequest = '';
 	$('#stagger-bequest').change(function () {
 		app.staggerBequest = $(this).val();
 		console.log(app.staggerBequest);
@@ -172,6 +225,7 @@ app.getStaggerBequest = function () {
 };
 
 app.getStagger = function () {
+	app.stagger = '';
 	$('#stagger').change(function () {
 		app.stagger = $(this).find('option:selected').val();
 		if (app.stagger === 'No') {
@@ -182,6 +236,7 @@ app.getStagger = function () {
 };
 
 app.getBequestAge = function () {
+	app.bequestAge = '';
 	$('#bequest-age').change(function () {
 		app.bequestAge = $(this).val();
 		console.log(app.bequestAge);
@@ -189,6 +244,7 @@ app.getBequestAge = function () {
 };
 
 app.getBequestMinor = function () {
+	app.bequestMinor = '';
 	$('#bequest-minor').change(function () {
 		app.bequestMinor = $(this).find('option:selected').val();
 		if (app.bequestMinor === 'Yes') {
@@ -199,6 +255,7 @@ app.getBequestMinor = function () {
 };
 
 app.getGuardianName = function () {
+	app.guardianName = '';
 	$('#guardian-name').change(function () {
 		app.guardianName = $(this).val();
 		console.log(app.guardianName);
@@ -206,6 +263,7 @@ app.getGuardianName = function () {
 };
 
 app.getDependentName = function () {
+	app.dependentName = '';
 	$('#dependent-name').change(function () {
 		app.dependentName = $(this).val();
 		console.log(app.dependentName);
@@ -213,6 +271,7 @@ app.getDependentName = function () {
 };
 
 app.getEstateDetails = function () {
+	app.estateDetails = '';
 	$('#estate-details').change(function () {
 		app.estateDetails = $(this).val();
 		console.log(app.estateDetails);
@@ -220,6 +279,7 @@ app.getEstateDetails = function () {
 };
 
 app.getTrusteeName = function () {
+	app.trusteeName = '';
 	$('#estate-trustee').change(function () {
 		app.trusteeName = $(this).val();
 		console.log(app.trusteeName);
@@ -227,6 +287,7 @@ app.getTrusteeName = function () {
 };
 
 app.getOtherName = function () {
+	app.otherName = '';
 	$('#otherName').change(function () {
 		app.otherName = $(this).val();
 		console.log(app.otherName);
@@ -234,6 +295,7 @@ app.getOtherName = function () {
 };
 
 app.getLegalName = function () {
+	app.legalName = '';
 	$('#legalName').change(function () {
 		app.legalName = $(this).val();
 		console.log(app.legalName);
@@ -241,6 +303,7 @@ app.getLegalName = function () {
 };
 
 app.getDependents = function () {
+	app.dependents = '';
 	$('.dependents').change(function () {
 		app.dependents = $(this).find('option:selected').val();
 		console.log(app.dependents);
@@ -248,6 +311,7 @@ app.getDependents = function () {
 };
 
 app.getMaritalStatus = function () {
+	app.martialStatus = '';
 	$('.marital-status').change(function () {
 		app.martialStatus = $(this).find('option:selected').val();
 		console.log(app.martialStatus);
@@ -275,6 +339,10 @@ app.init = function () {
 	app.getFinalWishes();
 	app.clickBtn04();
 	app.disclaimer();
+	app.clickPropertyBtn();
+	app.getPropertyRestriction();
+	app.getPropertyDate();
+	app.saveProperty();
 };
 
 $(function () {
