@@ -3,6 +3,76 @@
 var app = {};
 var doc = new jsPDF();
 
+app.saveCare = function () {
+	$('.save-care').click(function (e) {
+		e.preventDefault();
+		app.makeCareDocument();
+	});
+};
+
+app.makeCareDocument = function () {
+	doc.setFont('Open Sans');
+	doc.setFontSize(13);
+	doc.setLineWidth(0.1);
+	doc.line(20, 30, 190, 30); // horizontal line
+	doc.line(20, 38, 190, 38);
+	doc.line(20, 46, 190, 46);
+	doc.line(20, 54, 190, 54);
+	doc.line(20, 110, 190, 110);
+	doc.line(20, 118, 190, 118);
+
+	doc.line(20, 30, 20, 118); // vertical line
+	doc.line(75, 30, 75, 118);
+	doc.line(190, 30, 190, 118);
+
+	doc.text('Power of Attorney: Personal Care', 20, 27);
+	doc.text('Legal Name:', 22, 36);
+	doc.text(app.legalName, 77, 36);
+	doc.text('Other Name:', 22, 44);
+	doc.text(app.otherName, 77, 44);
+	doc.text('Attorney for Personal Care:', 22, 52);
+	doc.text(app.attorneyCare, 77, 52);
+	doc.text('Are there any restrictions \nof the Power of Attorney?', 22, 59);
+	doc.text(app.careRestriction, 77, 59);
+	doc.text('Date of Effectiveness:', 22, 116);
+	doc.text(app.careDate, 77, 116);
+
+	doc.save('Power of Attorney: Personal Care.pdf');
+};
+
+app.getCareDate = function () {
+	app.careDate = '';
+	$('#care-date').change(function () {
+		app.careDate = $(this).val();
+		console.log($(this).val());
+	});
+};
+
+app.getAttorneyCare = function () {
+	app.attorneyCare = '';
+	$('#attorney-care').change(function () {
+		app.attorneyCare = $(this).val();
+		console.log(app.attorneyCare);
+	});
+};
+
+app.getCareRestriction = function () {
+	app.careRestriction = '';
+	$('#care-restrictions').change(function () {
+		app.careRestriction = $(this).val();
+		console.log($(this).val());
+	});
+};
+
+app.clickCareBtn = function () {
+	$('.btn-poa-care').click(function (e) {
+		e.preventDefault();
+		console.log('clicked');
+		$('form.form-06').addClass('invisible');
+		$('div.poa-care-complete').removeClass('invisible');
+	});
+};
+
 // app.printDocument = function() {
 // 	doc.setFont('Open Sans');
 // 	doc.text('Will - Property & Estate Information', 10, 20);
@@ -24,22 +94,25 @@ app.makePropertyDocument = function () {
 	doc.line(20, 30, 190, 30); // horizontal line
 	doc.line(20, 38, 190, 38);
 	doc.line(20, 46, 190, 46);
-	doc.line(20, 102, 190, 102);
+	doc.line(20, 54, 190, 54);
 	doc.line(20, 110, 190, 110);
+	doc.line(20, 118, 190, 118);
 
-	doc.line(20, 30, 20, 110); // vertical line
-	doc.line(75, 30, 75, 110);
-	doc.line(190, 30, 190, 110);
+	doc.line(20, 30, 20, 118); // vertical line
+	doc.line(75, 30, 75, 118);
+	doc.line(190, 30, 190, 118);
 
 	doc.text('Power of Attorney: Property', 20, 27);
 	doc.text('Legal Name:', 22, 36);
 	doc.text(app.legalName, 77, 36);
 	doc.text('Other Name:', 22, 44);
 	doc.text(app.otherName, 77, 44);
-	doc.text('Are there any restrictions \nof the Power of Attorney?', 22, 52);
-	doc.text(app.propertyRestriction, 77, 52);
-	doc.text('Date of Effectiveness:', 22, 108);
-	doc.text(app.propertyDate, 77, 108);
+	doc.text('Attorney for Property:', 22, 52);
+	doc.text(app.attorneyProperty, 77, 52);
+	doc.text('Are there any restrictions \nof the Power of Attorney?', 22, 59);
+	doc.text(app.propertyRestriction, 77, 59);
+	doc.text('Date of Effectiveness:', 22, 116);
+	doc.text(app.propertyDate, 77, 116);
 
 	doc.save('Power of Attorney: Property.pdf');
 };
@@ -49,6 +122,14 @@ app.getPropertyDate = function () {
 	$('#property-date').change(function () {
 		app.propertyDate = $(this).val();
 		console.log($(this).val());
+	});
+};
+
+app.getAttorneyProperty = function () {
+	app.attorneyProperty = '';
+	$('#attorney-property').change(function () {
+		app.attorneyProperty = $(this).val();
+		console.log(app.attorneyProperty);
 	});
 };
 
@@ -340,9 +421,15 @@ app.init = function () {
 	app.clickBtn04();
 	app.disclaimer();
 	app.clickPropertyBtn();
+	app.getAttorneyProperty();
 	app.getPropertyRestriction();
 	app.getPropertyDate();
 	app.saveProperty();
+	app.clickCareBtn();
+	app.getAttorneyCare();
+	app.getCareRestriction();
+	app.getCareDate();
+	app.saveCare();
 };
 
 $(function () {
