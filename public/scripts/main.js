@@ -1,6 +1,120 @@
 'use strict';
 
 var app = {};
+var doc = new jsPDF();
+
+app.printDocument = function () {
+	doc.setFont('Open Sans');
+	doc.text('Will - Property & Estate Information', 10, 20);
+	doc.text('Legal Name: ' + app.legalName, 10, 30);
+	doc.autoPrint();
+	doc.save('autoprint.pdf');
+};
+
+app.saveDocument = function () {
+	doc.setFont('Open Sans');
+	doc.setFontSize(13);
+	doc.setLineWidth(0.1);
+	doc.line(20, 30, 190, 30); // horizontal line
+	doc.line(20, 38, 190, 38);
+	doc.line(20, 46, 190, 46);
+	doc.line(20, 54, 190, 54);
+	doc.line(20, 62, 190, 62);
+	doc.line(20, 76, 190, 76);
+	doc.line(20, 130, 190, 130);
+	doc.line(20, 160, 190, 160);
+	doc.line(20, 174, 190, 174);
+	doc.line(20, 194, 190, 194);
+	doc.line(20, 214, 190, 214);
+	doc.line(20, 228, 190, 228);
+	doc.line(20, 280, 190, 280);
+
+	doc.line(20, 30, 20, 280); // vertical line
+	doc.line(75, 30, 75, 280);
+	doc.line(190, 30, 190, 280);
+
+	doc.text('Will – Property & Estate Information', 20, 27);
+	doc.text('Legal Name:', 22, 36);
+	doc.text(app.legalName, 77, 36);
+	doc.text('Other Name:', 22, 44);
+	doc.text(app.otherName, 77, 44);
+	doc.text('Marital Status:', 22, 52);
+	doc.text(app.martialStatus, 77, 52);
+	doc.text('Dependants:', 22, 60);
+	doc.text(app.dependents, 77, 60);
+	doc.text('Name(s) of Estate Trustee:', 22, 68);
+	doc.text(app.trusteeName, 77, 68);
+	doc.text('What will happen with your \nEstate in the event of your \npassing?', 22, 82);
+	doc.text(app.estateDetails, 77, 82);
+	doc.text('Full name(s) of your \nchild/children:', 22, 136);
+	doc.text(app.dependentName, 77, 136);
+	doc.text('Guardian of any minor \nchildren', 22, 166);
+	doc.text(app.guardianName, 77, 166);
+	doc.text('Do you want a child who \nis not yet 18 to receive \nhis/her bequest at 18?', 22, 180);
+	doc.text(app.bequestMinor, 77, 180);
+	doc.text('If no, at what age \nshould he/she receive their \nbequest?', 22, 200);
+	doc.text(app.bequestAge, 77, 200);
+	doc.text('Do you wish to stagger the \npayments?', 22, 220);
+	doc.text(app.stagger, 77, 220);
+	doc.text('If yes, indicate your wishes \nfor staggering the bequest \nto the child/children', 22, 234);
+	doc.text(app.staggerBequest, 77, 234);
+
+	doc.addPage();
+	doc.line(20, 25, 190, 25); //horizontal lines
+	doc.line(20, 70, 190, 70);
+	doc.line(20, 110, 190, 110);
+	doc.line(20, 150, 190, 150);
+
+	doc.line(20, 25, 20, 150); // vertical line
+	doc.line(75, 25, 75, 150);
+	doc.line(190, 25, 190, 150);
+
+	doc.text('Are there specific wishes \nthat you have for your \npossessions?', 22, 31);
+	doc.text(app.wishes, 77, 31);
+	doc.text('Do you wish to make \nany charitable donations?', 22, 76);
+	doc.text(app.donations, 77, 76);
+	doc.text('Do you wish to include \nany burial or cremation \ninstructions?', 22, 116);
+	doc.text(app.FinalWishes, 77, 116);
+
+	doc.save('a4.pdf');
+};
+
+app.printWill = function () {
+	$('.print-will').click(function (e) {
+		e.preventDefault();
+		app.printDocument();
+	});
+};
+
+app.saveWill = function () {
+	$('.save-will').click(function (e) {
+		e.preventDefault();
+		app.saveDocument();
+	});
+};
+
+app.disclaimer = function () {
+	$('.is-checked').click(function () {
+		if ($(this).prop('checked')) {
+			$('button').removeClass('btn-default');
+			$('button').addClass('btn-primary');
+			app.saveWill();
+			app.printWill();
+		} else {
+			$('button').removeClass('btn-primary');
+			$('button').addClass('btn-default');
+		}
+	});
+};
+
+app.clickBtn04 = function () {
+	$('.btn-04').click(function (e) {
+		e.preventDefault();
+		$('form.form-04').addClass('invisible');
+		$('div.will-complete').removeClass('invisible');
+		$('div.progress-bar').text('100%').css('width', '100%');
+	});
+};
 
 app.clickBtn03 = function () {
 	$('.btn-03').click(function (e) {
@@ -60,6 +174,9 @@ app.getStaggerBequest = function () {
 app.getStagger = function () {
 	$('#stagger').change(function () {
 		app.stagger = $(this).find('option:selected').val();
+		if (app.stagger === 'No') {
+			app.staggerBequest = 'NA';
+		}
 		console.log(app.stagger);
 	});
 };
@@ -74,7 +191,10 @@ app.getBequestAge = function () {
 app.getBequestMinor = function () {
 	$('#bequest-minor').change(function () {
 		app.bequestMinor = $(this).find('option:selected').val();
-		console.log(app.bequestMinor);
+		if (app.bequestMinor === 'Yes') {
+			app.bequestAge = 'NA';
+		}
+		console.log(app.bequestMinor, app.bequestAge);
 	});
 };
 
@@ -153,12 +273,10 @@ app.init = function () {
 	app.getWishes();
 	app.getDonations();
 	app.getFinalWishes();
+	app.clickBtn04();
+	app.disclaimer();
 };
 
 $(function () {
 	app.init();
 });
-
-var doc = new jsPDF();
-doc.text('Hello world!', 10, 10);
-// doc.save('a4.pdf');
