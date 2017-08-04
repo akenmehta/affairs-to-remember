@@ -228,11 +228,11 @@ footer p {
     .disclaimer .agree label {
       width: 35%; }
 
-#poa-date {
-  width: 262px;
-  /*@media (max-width: 400px) {
-		width: 100%;
-	}*/ }
+#property-date, #care-date {
+  width: 262px; }
+  @media (max-width: 400px) {
+    #property-date, #care-date {
+      width: 100%; } }
 
 body {
   font-family: 'Open Sans',Helvetica, Arial, sans-serif;
